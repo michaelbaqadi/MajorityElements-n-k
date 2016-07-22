@@ -67,7 +67,6 @@ public class MajorityElements {
     	}
     	
     	for(int i = 0; i < nums.length ;i++){
-    		 
     		int valCounter = 0;
     		for(int j = 0; j < list.size();j++){
     			if(list.get(j) == nums[i]){
