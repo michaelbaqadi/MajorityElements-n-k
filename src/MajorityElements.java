@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class MajorityElements {
 	
-    public static int findElement(List<Integer> list, int k){
+    public static List<Integer> findElement(List<Integer> list, int k){
     	/*
     	 * nums array to keep track of the latest k numbers visited
     	 * counters to keep count of each number in nums array
@@ -65,8 +65,9 @@ public class MajorityElements {
     			}
     		}
     	}
-    	
+    	List<Integer> result = new ArrayList<Integer>();
     	for(int i = 0; i < nums.length ;i++){
+    		 
     		int valCounter = 0;
     		for(int j = 0; j < list.size();j++){
     			if(list.get(j) == nums[i]){
@@ -74,10 +75,10 @@ public class MajorityElements {
     			}
     		}
         	if(valCounter > list.size()/k){
-        		return nums[i];
+        		result.add(nums[i]);
         	}
     	}
-    	return -1;
+    	return result;
     	
     }
 	public static void main(String[] args) {
