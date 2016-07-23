@@ -11,13 +11,13 @@ import java.util.List;
  */
 public class MajorityElements {
 	
-    public static List<Integer> findElement(List<Integer> list, int k){
+    public static int findElement(List<Integer> list, int k){
     	/*
     	 * nums array to keep track of the latest k numbers visited
     	 * counters to keep count of each number in nums array
     	 * */
-    	Integer[] nums = new Integer[k];
-    	Integer[] counters = new Integer[k]; 
+    	Integer[] nums = new Integer[k-1];
+    	Integer[] counters = new Integer[k-1]; 
     	
     	// init all values to zero in both arrays
     	for(int i = 0 ; i < nums.length;i++){
@@ -65,26 +65,20 @@ public class MajorityElements {
     			}
     		}
     	}
-    	List<Integer> result = new ArrayList<Integer>();
-    	for(int i = 0; i < nums.length ;i++){
-    		 
-    		int valCounter = 0;
-    		for(int j = 0; j < list.size();j++){
-    			if(list.get(j) == nums[i]){
-    				valCounter++;
-    			}
+    	int index = 0;
+    	int maxValue =  counters[0];
+    	for(int i = 1; i < nums.length ;i++){
+    		if(counters[i] > counters[i-1]){
+    			index = i;
     		}
-        	if(valCounter > list.size()/k){
-        		result.add(nums[i]);
-        	}
     	}
-    	return result;
+    	return nums[index];
     	
     }
 	public static void main(String[] args) {
 		List<Integer> list = new ArrayList<Integer>();
 
-		list.addAll(Arrays.asList(5, 5, 3, 5, 3, 8, 5, 6, 5, 7, 3,1));
+		list.addAll(Arrays.asList(0,0,1,7,1,1));
 		System.out.println(findElement(list, 3));
 	}
 
