@@ -68,7 +68,8 @@ public class MajorityElements {
     	int index = 0;
     	int maxValue =  counters[0];
     	for(int i = 1; i < nums.length ;i++){
-    		if(counters[i] > counters[i-1]){
+    		if(counters[i] > maxValue){
+    			maxValue = counters[i];
     			index = i;
     		}
     	}
